@@ -25,11 +25,13 @@ interface Config {
 async function getDatabaseUrl() {
     let options: Config;
     try {
-        options = JSON.parse((await fs.readFile("./config.json")).toString());
+        options = JSON.parse(
+            (await fs.readFile("./usda-food-data.json")).toString()
+        );
         if (options.mongouri) {
             return options.mongouri;
         } else {
-            throw new Error("Missing mongodb:// in config.json!");
+            throw new Error();
         }
     } catch (e) {
         const rl = readline.createInterface({
@@ -50,12 +52,17 @@ async function writeConfig() {
     if (updateConfig) {
         let options;
         try {
-            options = JSON.parse(String(await fs.readFile("./config.json")));
+            options = JSON.parse(
+                String(await fs.readFile("./usda-food-data.json"))
+            );
         } catch (e) {
             options = {};
         }
         options.mongouri = mongoUri;
-        await fs.writeFile("./config.json", JSON.stringify(options, null, 4));
+        await fs.writeFile(
+            "./usda-food-data.json",
+            JSON.stringify(options, null, 4)
+        );
         updateConfig = false;
     }
 }
@@ -80,17 +87,23 @@ export async function start() {
     writeConfig();
 }
 
+export default {
+    start,
+    shutdown
+};
 export { default as AbridgedFoodItem } from "./AbridgedFoodItem.js";
 export { default as AbridgedFoodNutrient } from "./AbridgedFoodNutrient.js";
 export { default as BrandedFoodItem } from "./BrandedFoodItem.js";
 export { default as FoodAttribute } from "./FoodAttribute.js";
 export { default as FoodAttributeType } from "./FoodAttributeType.js";
 export { default as FoodCategory } from "./FoodCategory.js";
+export { default as FoodComponent } from "./FoodComponent.js";
 export { default as FoodNutrient } from "./FoodNutrient.js";
 export { default as FoodNutrientDerivation } from "./FoodNutrientDerivation.js";
 export { default as FoodNutrientSource } from "./FoodNutrientSource.js";
 export { default as FoodPortion } from "./FoodPortion.js";
 export { default as FoodUpdateLog } from "./FoodUpdateLog.js";
+export { default as FoundationFoodItem } from "./FoundationFoodItem.js";
 export { default as InputFoodFoundation } from "./InputFoodFoundation.js";
 export { default as InputFoodSurvey } from "./InputFoodSurvey.js";
 export { default as LabelNutrients } from "./LabelNutrients.js";

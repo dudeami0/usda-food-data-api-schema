@@ -1,16 +1,23 @@
 export declare function shutdown(): Promise<void>;
 export declare function start(): Promise<void>;
+declare const _default: {
+    start: typeof start;
+    shutdown: typeof shutdown;
+};
+export default _default;
 export { default as AbridgedFoodItem } from "./AbridgedFoodItem.js";
 export { default as AbridgedFoodNutrient } from "./AbridgedFoodNutrient.js";
 export { default as BrandedFoodItem } from "./BrandedFoodItem.js";
 export { default as FoodAttribute } from "./FoodAttribute.js";
 export { default as FoodAttributeType } from "./FoodAttributeType.js";
 export { default as FoodCategory } from "./FoodCategory.js";
+export { default as FoodComponent } from "./FoodComponent.js";
 export { default as FoodNutrient } from "./FoodNutrient.js";
 export { default as FoodNutrientDerivation } from "./FoodNutrientDerivation.js";
 export { default as FoodNutrientSource } from "./FoodNutrientSource.js";
 export { default as FoodPortion } from "./FoodPortion.js";
 export { default as FoodUpdateLog } from "./FoodUpdateLog.js";
+export { default as FoundationFoodItem } from "./FoundationFoodItem.js";
 export { default as InputFoodFoundation } from "./InputFoodFoundation.js";
 export { default as InputFoodSurvey } from "./InputFoodSurvey.js";
 export { default as LabelNutrients } from "./LabelNutrients.js";
