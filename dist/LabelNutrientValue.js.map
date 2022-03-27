@@ -1,0 +1,1 @@
+{"version":3,"file":"LabelNutrientValue.js","sourceRoot":"","sources":["../ts/LabelNutrientValue.ts"],"names":[],"mappings":"AAAA,OAAO,QAAQ,MAAM,UAAU,CAAC;AAEhC,MAAM,EAAE,MAAM,EAAE,GAAG,QAAQ,CAAC;AAM5B,MAAM,CAAC,MAAM,kBAAkB,GAAG,IAAI,MAAM,CAAqB;IAC7D,KAAK,EAAE,MAAM;CAChB,CAAC,CAAC;AAEH,QAAQ,CAAC,KAAK,CAAC,oBAAoB,EAAE,kBAAkB,CAAC,CAAC"}
