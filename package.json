@@ -1,6 +1,6 @@
 {
     "name": "usda-food-data-api-schema",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Various Schema data for the USDA Food Data database",
     "main": "dist/index.js",
     "scripts": {

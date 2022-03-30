@@ -3,10 +3,13 @@ import mongoose from "mongoose";
 import readline from "readline";
 import url, { URL } from "url";
 
-const __dirname = new URL(".", import.meta.url).pathname.replace(
-    new RegExp("^/", "g"),
-    ""
-);
+const __dirname = (() => {
+    let path = new URL(".", import.meta.url).pathname;
+    if (process.platform === "win32") {
+        path = path.replace(new RegExp("^/", "g"), "");
+    }
+    return path;
+})();
 
 let updateConfig = false;
 let mongoUri: string = "";
