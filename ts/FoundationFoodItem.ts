@@ -27,7 +27,7 @@ export default interface FoundationFoodItem {
 }
 
 export const FoundationFoodItemSchema = new Schema<FoundationFoodItem>({
-    fdcId: Number,
+    fdcId: { type: Number, unique: true },
     dataType: String,
     description: String,
     foodClass: String,
@@ -45,5 +45,7 @@ export const FoundationFoodItemSchema = new Schema<FoundationFoodItem>({
         { type: Schema.Types.ObjectId, ref: "NutrientConversionFactors" }
     ]
 });
+
+FoundationFoodItemSchema.index({ "$**": "text" });
 
 mongoose.model("FoundationFoodItem", FoundationFoodItemSchema);

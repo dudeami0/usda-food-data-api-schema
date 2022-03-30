@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 export const SRLegacyFoodItem = new Schema({
-    fdcId: Number,
+    fdcId: { type: Number, unique: true },
     dataType: String,
     description: String,
     foodClass: String,
@@ -15,5 +15,6 @@ export const SRLegacyFoodItem = new Schema({
         { type: Schema.Types.ObjectId, ref: "NutrientConversionFactors" }
     ]
 });
+SRLegacyFoodItem.index({ "$**": "text" });
 mongoose.model("SRLegacyFoodItem", SRLegacyFoodItem);
 //# sourceMappingURL=SRLegacyFoodItem.js.map

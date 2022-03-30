@@ -21,7 +21,7 @@ export default interface SurveyFoodItem {
 }
 
 export const SurveyFoodItemSchema = new Schema<SurveyFoodItem>({
-    fdcId: Number,
+    fdcId: { type: Number, unique: true },
     datatype: String,
     description: String,
     endDate: String,
@@ -33,5 +33,7 @@ export const SurveyFoodItemSchema = new Schema<SurveyFoodItem>({
     inputFoods: [{ type: Schema.Types.ObjectId, ref: "InputFoodSurvey" }],
     wweiaFoodCategory: { type: Schema.Types.ObjectId, ref: "WweiaFoodCategory" }
 });
+
+SurveyFoodItemSchema.index({ "$**": "text" });
 
 mongoose.model("SurveyFoodItem", SurveyFoodItemSchema);

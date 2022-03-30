@@ -20,7 +20,7 @@ export default interface SRLegacyFoodItem {
 }
 
 export const SRLegacyFoodItem = new Schema<SRLegacyFoodItem>({
-    fdcId: Number,
+    fdcId: { type: Number, unique: true },
     dataType: String,
     description: String,
     foodClass: String,
@@ -34,5 +34,7 @@ export const SRLegacyFoodItem = new Schema<SRLegacyFoodItem>({
         { type: Schema.Types.ObjectId, ref: "NutrientConversionFactors" }
     ]
 });
+
+SRLegacyFoodItem.index({ "$**": "text" });
 
 mongoose.model("SRLegacyFoodItem", SRLegacyFoodItem);

@@ -33,7 +33,7 @@ export default interface BrandedFoodItem {
 }
 
 export const BrandedFoodItemSchema = new Schema({
-    fdcId: Number,
+    fdcId: { type: Number, unique: true },
     availableDate: String,
     brandName: String,
     subbrandName: String,
@@ -57,5 +57,7 @@ export const BrandedFoodItemSchema = new Schema({
     foodUpdateLog: [{ type: Schema.Types.ObjectId, ref: "FoodUpdateLog" }],
     labelNutrients: { type: Schema.Types.ObjectId, ref: "LabelNutrients" }
 });
+
+BrandedFoodItemSchema.index({ "$**": "text" });
 
 mongoose.model("BrandedFoodItem", BrandedFoodItemSchema);
